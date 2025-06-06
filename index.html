@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nils Best Man Competition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: "👔";
+            font-size: 3rem;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            opacity: 0.3;
+        }
+
+        .header::after {
+            content: "🤵";
+            font-size: 3rem;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            opacity: 0.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .leaderboard {
+            padding: 40px 30px;
+        }
+
+        .leaderboard-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .contestant {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contestant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contestant.first {
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+            color: white;
+            border-left-color: #e67e22;
+        }
+
+        .contestant.second {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+            border-left-color: #34495e;
+        }
+
+        .contestant.third {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            border-left-color: #c0392b;
+        }
+
+        .rank {
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 50px;
+            text-align: center;
+        }
+
+        .contestant-info {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        .contestant-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .contestant-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .points {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .contestant:not(.first):not(.second):not(.third) .points {
+            background: #3498db;
+            color: white;
+        }
+
+        .crown {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .footer {
+            background: #ecf0f1;
+            padding: 20px 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .update-time {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .leaderboard {
+                padding: 30px 20px;
+            }
+
+            .contestant {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contestant-info {
+                margin-left: 0;
+            }
+
+            .rank {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Nils Best Man</h1>
+            <p class="subtitle">Competition Leaderboard</p>
+        </div>
+
+        <div class="leaderboard">
+            <h2 class="leaderboard-title">🏆 Current Standings</h2>
+
+            <div class="contestant first">
+                <div class="rank">
+                    <span class="crown">👑</span>1
+                </div>
+                <div class="contestant-info">
+                    <div class="contestant-name">Milton</div>
+                </div>
+                <div class="points">245</div>
+            </div>
+
+            <div class="contestant second">
+                <div class="rank">🥈 2</div>
+                <div class="contestant-info">
+                    <div class="contestant-name">Charlie</div>
+                </div>
+                <div class="points">198</div>
+            </div>
+
+            <div class="contestant third">
+                <div class="rank">🥉 3</div>
+                <div class="contestant-info">
+                    <div class="contestant-name">Kevin</div>
+                </div>
+                <div class="points">176</div>
+            </div>
+
+            <div class="contestant">
+                <div class="rank">4</div>
+                <div class="contestant-info">
+                    <div class="contestant-name">Heff</div>
+                </div>
+                <div class="points">142</div>
+            </div>
+
+            <div class="contestant">
+                <div class="rank">5</div>
+                <div class="contestant-info">
+                    <div class="contestant-name">Oskar</div>
+                </div>
+                <div class="points">-182</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>May the best man win! 🎩</p>
+            <p class="update-time">Last updated: <span id="updateTime"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Display current date and time
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('updateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        // Update time on page load
+        updateTime();
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.contestant').forEach(contestant => {
+            contestant.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+
+            contestant.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>
